@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import {Row, Col, Button} from 'antd';
-import { FastBackwardOutlined , SaveOutlined , MenuFoldOutlined} from '@ant-design/icons';
+import {MenuFoldOutlined} from '@ant-design/icons';
 
 import './Header.scss';
 

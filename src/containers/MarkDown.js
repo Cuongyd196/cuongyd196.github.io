@@ -38,7 +38,7 @@ class MarkDown extends Component {
     }
     render() {
         return (
-            <div dangerouslySetInnerHTML={{ __html: marked(this.state.markdown) }}></div>
+            <div> Blog Cường it</div>
         )
     }
 }

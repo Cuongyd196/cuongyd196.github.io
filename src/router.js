@@ -8,7 +8,7 @@ import ViewLayout from './containers/ViewLayout';
 import MarkDown from './containers/MarkDown';
 import Gossip from './components/gossip/Gossip'
 import Articels from './components/articles/Articles';
-
+// eslint-disable-next-line
 export default () => (
     <HashRouter>
         <ViewLayout>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Footer.scss';
-
+// eslint-disable-next-line
 export default () => (
     <footer className="footer">
         <p><a href='http://douban.com'>上五楼的快活</a></p>
