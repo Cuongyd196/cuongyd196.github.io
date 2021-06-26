@@ -1,8 +1,8 @@
 {
   "name": "react-antd-admin",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://cuongyd196.github.io/cuongyd196.github.io",
+  "private": false,
+  "homepage": "https://cuongyd196.github.io",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "antd": "^4.16.3",
