@@ -17,7 +17,7 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible: false, //小屏时菜单显示与否
+            visible: false,
         }
     }
 
