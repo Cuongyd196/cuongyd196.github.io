@@ -1,9 +1,3 @@
-/**
- * @author LiuNing
- * @since 2019-04-08
- * @description 头部Header
- * 使用antd Row Col的xs sm响应式栅格布局实现移动端适配
- */
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
@@ -28,10 +22,10 @@ class Header extends Component {
     render() {
         const links = [
             { key: "/", text: 'Trang chủ' },
-            { key: "/article", text: 'Phần mềm' },
+            { key: "/code", text: 'Code dạo' },
+            { key: "/computer", text: 'Máy tính' },
             { key: "/timeline", text: 'Thời gian' },
-            { key: "/gather", text: 'Lập trình' },
-            { key: "/gossip", text: 'Thông tin' },
+            { key: "/about", text: 'Giới thiệu' },
         ];
         return (
             <div className="header-wrapper">
@@ -71,10 +65,10 @@ class Header extends Component {
                                 <ul onClick={this.onClick}>
                                     <li className="nav-top-item">
                                         <Link to="/" data-key="/">Trang chủ</Link>
-                                        <Link to="/article" data-key="/article">Phần mềm</Link>
+                                        <Link to="/code" data-key="/code">Code dạo</Link>
+                                        <Link to="/computer" data-key="/computer">Máy tính</Link>
                                         <Link to="/timeline" data-key="/timeline">Thời gian</Link>
-                                        <Link to="/gather" data-key="/gather">Lập trình</Link>
-                                        <Link to="/gossip" data-key="/gossip">Thông tin</Link>
+                                        <Link to="/about" data-key="/about">Giới thiệu</Link>
                                     </li>
                                 </ul>
                             </div>

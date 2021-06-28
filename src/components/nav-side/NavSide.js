@@ -4,7 +4,7 @@ import portrait_bg from '../../images/portrait_bg.jpg';
 import me from '../../images/me.jpg';
 import ('./NavSide.scss');
 /* eslint-disable import/first */
-import { FastBackwardOutlined  } from '@ant-design/icons';
+import { FastBackwardOutlined, FacebookOutlined, YoutubeOutlined , GithubOutlined, MailOutlined } from '@ant-design/icons';
 
 
 class NavSide extends Component {
@@ -35,21 +35,21 @@ class NavSide extends Component {
                     <div className="panel-heading">FOLLOW ME</div>
                     <div className="panel-body text-center">
                         <p className="follow-link">
-                            <a href="https://github.com/Marco2333" target="_blank" rel="noopener noreferrer">  <FastBackwardOutlined/></a>
+                            <a href="https://fb.com/cuongppk" target="_blank" rel="noopener noreferrer"> <FacebookOutlined /></a>
                         </p>
                         <p className="follow-link" style={{ transform: "rotate(180deg)" }}>
-                            <a href="https://github.com/Marco2333" target="_blank" rel="noopener noreferrer"> <FastBackwardOutlined/></a>
+                            <a href="https://www.youtube.com/channel/UCIFEDkmDF8gC3MJ-ycu7UoA" target="_blank" rel="noopener noreferrer"> <YoutubeOutlined /></a>
                         </p>
                         <p className="follow-link" style={{ transform: "rotate(90deg)" }}>
-                            <a href="https://github.com/Marco2333" target="_blank" rel="noopener noreferrer"> <FastBackwardOutlined/></a>
+                            <a href="https://github.com/cuongyd196" target="_blank" rel="noopener noreferrer"> <GithubOutlined /></a>
                         </p>
                         <p className="follow-link" style={{ transform: "rotate(270deg)" }}>
-                            <a href="https://github.com/Marco2333" target="_blank" rel="noopener noreferrer"> <FastBackwardOutlined/></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer"> <MailOutlined /></a>
                         </p>
                     </div>
                 </div>
                 <div className="panel">
-                    <div className="panel-heading">文章列表</div>
+                    <div className="panel-heading">Bài viết mới nhất</div>
                     <div className="panel-body">
                         <ol>
                             <li key='1'>
@@ -68,7 +68,7 @@ class NavSide extends Component {
                     </div>
                 </div>
                 <div className="panel">
-                    <div className="panel-heading">文章分类</div>
+                    <div className="panel-heading">Số lượt truy cập</div>
                     <div className="panel-body">
                         <ul>
                             <li key='2'>
