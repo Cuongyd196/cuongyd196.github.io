@@ -6,11 +6,11 @@ import {
 
 import ViewLayout from './containers/ViewLayout';
 import Gossip from './components/gossip/Gossip'
-import Articels from './components/articles/Articles';
 import Home from "./containers/Home";
 import About from "./containers/About";
 import Code from "./containers/Code";
 import Computer from "./containers/Computer";
+import TinTucChiTiet from "./containers/Computer/Detail";
 // eslint-disable-next-line
 export default () => (
     <HashRouter>
@@ -21,6 +21,8 @@ export default () => (
             <Route path='/home' component={Home} />
             <Route path='/about' component={About} />
             <Route path='/computer' component={Computer} />
+            <Route path='/computer-detail/:id' component={TinTucChiTiet} />
+
         </ViewLayout>
     </HashRouter>
 )

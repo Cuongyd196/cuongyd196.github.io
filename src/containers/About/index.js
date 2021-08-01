@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function About() {
   // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
-
   return (
     <div>
       <h2> Trang giới thiệu</h2>
@@ -15,5 +13,4 @@ function About() {
     </div>
   );
 }
-
 export default About

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {getAll} from "../../services/tintuc/tintucService";
 import {Link} from "react-router-dom";
 import '../../components/articles/Articles.scss';
-import {dateFormatter, timeFormatter} from "../../common/dateFormat";
+import { timeFormatter} from "../../common/dateFormat";
 
 class Code extends Component {
   constructor(props) {

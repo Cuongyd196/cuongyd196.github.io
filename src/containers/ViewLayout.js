@@ -12,7 +12,9 @@ import NavSide from '../components/nav-side/NavSide';
 
 class ViewLayout extends Component {
 
+
     render() {
+      console.log(this.props,'prop')
         return (
             <Fragment>
                 <Header />

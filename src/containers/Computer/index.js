@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {getAll} from "../../services/tintuc/tintucService";
 import {Link} from "react-router-dom";
 import '../../components/articles/Articles.scss';
-import {dateFormatter, timeFormatter} from "../../common/dateFormat";
+import {timeFormatter} from "../../common/dateFormat";
 
 class Computer extends Component {
   constructor(props) {
@@ -30,10 +30,10 @@ class Computer extends Component {
         {
           this.state.data?.map(tintuc => {
             return (
-              <div key={tintuc.id}>
+              <div key={tintuc._id}>
                 <div className="article-item wow zoomIn animated">
                   <div className="article-body" onMouseOver={this.handleMouseOver}>
-                    <Link to={`/article-detail/${tintuc.id}`}><h4>{tintuc.tieude}</h4></Link>
+                    <Link to={`/computer-detail/${tintuc._id}`}><h4>{tintuc.tieude}</h4></Link>
                     <p>
                       <span>Thời gian: {timeFormatter(tintuc.created_at)}</span>
                       &nbsp;&nbsp;&nbsp;
@@ -44,7 +44,7 @@ class Computer extends Component {
                     <div className="article-abstract">
                       {tintuc.mota} ...
                     </div>
-                    <span className="article-link"><Link to={`/article-detail/${tintuc.id}`}>Xem thêm >></Link></span>
+                    <span className="article-link"><Link to={`/computer-detail/${tintuc._id}`}>Xem thêm >></Link></span>
                   </div>
                 </div>
               </div>
