@@ -25,7 +25,7 @@ export default function App() {
       <Header />
       <div className="container content-wrap">
         <Row gutter={24}>
-          <Col xs={24} sm={17}>
+          <Col xs={24} sm={18}>
             <Content style={{ padding: '0 50px', marginTop: 64 }}>
               <Switch>{mainRoutes.map((route, i) =>
               (route.auth ?
@@ -35,7 +35,7 @@ export default function App() {
               </Switch>
             </Content>
           </Col>
-          <Col xs={24} sm={7}>
+          <Col xs={24} sm={6}>
             <NavSide />
           </Col>
         </Row>

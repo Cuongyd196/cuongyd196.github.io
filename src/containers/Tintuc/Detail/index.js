@@ -56,24 +56,23 @@ class TintucDetail extends Component {
   }
   render() {
     const data = this.state.data
-    console.log(data, 'data');
     return (
-      <div className="article-list">
-        <div>
+      <div>
+        <div >
           {this.state.loading ? <Loader></Loader> : ''}
         </div>
         {
           !this.state.loading && <BreadcrumbComponent />
         }
         {
-          !this.state.loading && data && <Card title={data.tieude} style={{ width: '100%' }}>
+          !this.state.loading && data && <Card title={data.tieude} >
             {data.noidung && renderHTML(data.noidung)}
             {/* {data.linkvideo && renderHTML(data.linkvideo)} */}
             <YoutubeEmbed embedId={`${data.linkvideo}`} />
           </Card>
         }
         {
-          !this.state.loading && this.state.tintuc.length > 0 && <Card title={'Bài viết khác'} style={{ width: '100%' }}>
+          !this.state.loading && this.state.tintuc.length > 0 && <Card title={'Bài viết khác'}>
             {this.state.tintuc.map((data, index) => {
               return (
                 <div key={index}>
