@@ -36,8 +36,6 @@ class DevDetail extends Component {
       })
     );
     if (apiResponse) {
-      console.log(apiResponse, 'apiResponse');
-
       let devFilter = apiResponse.dev.docs?.filter(data => data._id !== this.props.match.params.id)
       this.setState({
         data: apiResponse.data,
