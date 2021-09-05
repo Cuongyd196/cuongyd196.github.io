@@ -1,78 +1,101 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ⚛️ Create React Ant Design Boilerplate <br>[![GitHub issues](https://img.shields.io/github/issues/PW486/react-antd-boilerplate.svg?style=flat-square&color=brown)](https://github.com/PW486/react-antd-boilerplate/issues) [![GitHub forks](https://img.shields.io/github/forks/PW486/react-antd-boilerplate.svg?style=flat-square)](https://github.com/PW486/react-antd-boilerplate/network) [![GitHub stars](https://img.shields.io/github/stars/PW486/react-antd-boilerplate.svg?style=flat-square&color=orange)](https://github.com/PW486/react-antd-boilerplate/stargazers) [![GitHub license](https://img.shields.io/github/license/PW486/react-antd-boilerplate.svg?style=flat-square&color=violet)](https://github.com/PW486/react-antd-boilerplate/blob/develop/LICENSE) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PW486/react-antd-boilerplate.svg?color=blueviolet&style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/PW486/react-antd-boilerplate.svg?style=flat-square&color=red) [![David](https://img.shields.io/david/PW486/react-antd-boilerplate.svg?style=flat-square&color=green)](https://david-dm.org/PW486/react-antd-boilerplate)
 
-#### React-Router
+> **[Create React App](https://github.com/facebook/create-react-app) + [Ant Design](https://ant.design) + [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)**
 
-使用**hashHistory**则url中会出现#号，使用**browserHistory**就可以解决；在react-router4中分别为HashRouter、BrowserHistory。
+Need to change the **`REACT_APP_BASE_URL`**. Here is an example server. [https://github.com/PW486/express-ts-starter](https://github.com/PW486/express-ts-starter)
 
-```jsx
-import { HashRouter, BrowserRouter } from 'react-router-dom';
+## Getting Started
+
+```sh
+> git clone https://github.com/PW486/react-antd-boilerplate.git
+> npm install
+> npm start
 ```
 
-在使用Github gh-pages中发现，Github服务器对支持react-router的BrowserRouter有问题，改为HashRouter后一切正常。
+### Set Environments
 
-## Available Scripts
+```sh
+> cp .env.example .env
+> vi .env
+```
 
-In the project directory, you can run:
+### Building
 
-### `npm start`
+```sh
+> npm run build
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Developing
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Remove local branches deleted on remote server
+  ```sh
+  > git fetch -p && for branch in `git branch -vv --no-color | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done
+  ```
+- Keep the linter and formatter rules
+- Check unused, outdated states of dependencies : **`depcheck` `npm-check-updates`**
 
-### `npm test`
+### Tech Stack
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Category            | Name           |
+| ------------------- | -------------- |
+| Language            | **JavaScript** |
+| UI Framework        | **React**      |
+| State Manager       | **Redux**      |
+| Side Effect Manager | **Redux Saga** |
+| Selector            | **Reselect**   |
+| UI Component        | **Ant Design** |
+| Authentication      | **JWT**        |
+| Linter              | **ESLint**     |
+| Formatter           | **Prettier**   |
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Main Directory
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```makefile
+src
+├── components # Layout, Shared, Custom Components
+|  ├── Header
+|  ├── PrivateRoute
+|  └── Sider
+├── containers # Components with a Redux store
+|  ├── Board
+|  ├── NotFound
+|  └── SignIn
+├── routes # Routes directory
+├── utils # Util directory
+├── App.js
+├── global.reducer.js
+├── global.selectors.js
+└── index.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Board Directory
 
-### `npm run eject`
+```makefile
+Board
+├── PostTable # Subcomponents
+|  └── index.js
+├── WritePostModal # Subcomponents
+|  └── index.js
+├── board.actions.js
+├── board.api.js
+├── board.constants.js
+├── board.reducer.js
+├── board.saga.js
+├── board.selectors.js
+└── index.js
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+File naming convention is `"key of store"."attribute"`. Subcomponents that will be used only within the page create and use separate directories.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[![Create React Ant Design Boilerplate](https://user-images.githubusercontent.com/14247340/69508953-a9f42d00-0f7a-11ea-97bc-2369b7e65676.png)](https://www.youtube.com/watch?v=-TT-cMpDv1c)
+<br>
+[YouTube](https://www.youtube.com/watch?v=-TT-cMpDv1c)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright © 2019 [DONGGEON LIM](https://github.com/PW486).<br />
+This project is [MIT](https://github.com/PW486/react-antd-boilerplate/blob/master/LICENSE) licensed.

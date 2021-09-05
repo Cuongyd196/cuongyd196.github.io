@@ -5,6 +5,6 @@ import './Footer.scss';
 export default () => (
     <footer className="footer">
         <p><a href='http://cuongit.tech'>Cường Nguyễn</a></p>
-        <p><span>Cuong@2018-2019 All rights reserved</span></p>
+        <p><span>CuongIT@2021</span></p>
     </footer>
 )
