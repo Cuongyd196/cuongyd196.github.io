@@ -36,8 +36,6 @@ class TechnologyDetail extends Component {
       })
     );
     if (apiResponse) {
-      console.log(apiResponse, 'apiResponse');
-
       let technologyFilter = apiResponse.technology.docs?.filter(data => data._id !== this.props.match.params.id)
       this.setState({
         data: apiResponse.data,

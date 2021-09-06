@@ -25,8 +25,8 @@ export default function App() {
       <Header />
       <div className="container content-wrap">
         <Row gutter={24}>
-          <Col xs={24} sm={18}>
-            <Content style={{ padding: '0 50px', marginTop: 64 }}>
+          <Col xs={24} sm={24} md={17} lg={17} xl={17} xxl={17} >
+            <Content style={{ padding: '0 20px', marginTop: 64 }}>
               <Switch>{mainRoutes.map((route, i) =>
               (route.auth ?
                 <PrivateRoute {...route} key={i} />
@@ -35,7 +35,7 @@ export default function App() {
               </Switch>
             </Content>
           </Col>
-          <Col xs={24} sm={6}>
+          <Col xs={24} sm={24} md={7} lg={7} xl={7} xxl={7} >
             <NavSide />
           </Col>
         </Row>
