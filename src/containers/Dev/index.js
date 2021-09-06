@@ -5,7 +5,7 @@ import "./Dev.scss";
 import { timeFormatter } from "../../constants/dateFormat";
 import Loader from 'components/Loader/Loader';
 import NoData from 'containers/NoData/index'
-import { Button } from 'antd';
+import { Button, Pagination } from 'antd';
 import { DownloadOutlined, StepForwardOutlined } from '@ant-design/icons';
 
 
@@ -14,24 +14,43 @@ class Dev extends Component {
     super(props);
     this.state = {
       data: [],
-      loading: true
+      loading: true,
+      page: 1,
+      limit: 5,
+      totalDocs: 0
     }
   }
-
   componentDidMount() {
     this.getData()
   }
 
   async getData() {
-    const data = await getAll(1, 0)
-    if (data) {
+    const { data, totalDocs, page, limit } = this.state;
+    const dataApi = await getAll(page, limit)
+    if (dataApi) {
       this.setState({
-        data: data.docs,
-        loading: false
+        data: dataApi.docs,
+        loading: false,
+        totalDocs: dataApi.totalDocs
       })
     }
   }
+
+  onChangePage = async page => {
+    const { limit } = this.state;
+    const dataApi = await getAll(page, limit)
+    if (dataApi) {
+      this.setState({
+        data: dataApi.docs,
+        loading: false
+      })
+    }
+
+  };
+
   render() {
+    const { data, totalDocs, page, limit } = this.state;
+
     return (
       <div className="article-list">
         <div>
@@ -65,6 +84,14 @@ class Dev extends Component {
             )
           })
         }
+        <div className="page">
+          {this.state.data && !this.state.loading ? <Pagination
+            onChange={this.onChangePage}
+            defaultCurrent={1}
+            pageSize={limit}
+            total={totalDocs} />
+            : ''}
+        </div>
       </div>
     )
   }
