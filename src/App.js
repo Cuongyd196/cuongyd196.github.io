@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 import NavSide from '../src/components/nav-side/NavSide';
 import { BackTop, Row, Col } from "antd";
@@ -30,7 +30,8 @@ export default function App() {
               <Switch>{mainRoutes.map((route, i) =>
               (route.auth ?
                 <PrivateRoute {...route} key={i} />
-                : <Route {...route} key={i} />))
+                :
+                <Route {...route} key={i} />))
               }
               </Switch>
             </Content>
