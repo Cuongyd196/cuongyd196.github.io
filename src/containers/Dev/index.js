@@ -7,7 +7,7 @@ import Loader from 'components/Loader/Loader';
 import NoData from 'containers/NoData/index'
 import { Button, Pagination } from 'antd';
 import { DownloadOutlined, StepForwardOutlined } from '@ant-design/icons';
-
+import { logo36 } from 'constants/ImageFromGooglePhotos'
 
 class Dev extends Component {
   constructor(props) {
@@ -50,12 +50,15 @@ class Dev extends Component {
 
   render() {
     const { data, totalDocs, page, limit } = this.state;
+    console.log(data.url, 'data');
 
     return (
       <div className="article-list">
         <div>
           {this.state.loading ? <Loader></Loader> : ''}
         </div>
+        {/* <img src={logo36} alt="" /> */}
+
         <div>
           {!this.state.loading && this.state.data.length == 0 ? <NoData></NoData> : ''}
         </div>
@@ -65,7 +68,7 @@ class Dev extends Component {
               <div key={dataDev._id}>
                 <div className="article-item wow zoomIn animated">
                   <div className="article-body" onMouseOver={this.handleMouseOver}>
-                    <Link to={`/dev/${dataDev._id}`}><h4>{dataDev.tieude}</h4></Link>
+                    <Link to={{ pathname: `/dev/${dataDev.url}`, state: `${dataDev._id}` }}><h4>{dataDev.tieude}</h4></Link>
                     <p>
                       <span>Thời gian: {timeFormatter(dataDev.created_at)}</span>
                       &nbsp;&nbsp;&nbsp;
@@ -75,7 +78,9 @@ class Dev extends Component {
                     </div>
                     <span className='article-link'>
                       <Button type="primary" shape="round" size={'middle'}>
-                        <Link style={{ color: 'white' }} to={`/dev/${dataDev._id}`}>Xem thêm >></Link>
+                        {/* <Link style={{ color: 'white' }} to={`/dev/${dataDev._id}`}>Xem thêm >></Link> */}
+                        <Link style={{ color: 'white' }} to={{ pathname: `/dev/${dataDev.url}`, state: `${dataDev._id}` }}>Xem thêm >></Link>
+
                       </Button>
                     </span>
                   </div>

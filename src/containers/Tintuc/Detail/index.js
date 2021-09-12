@@ -34,9 +34,36 @@ class TintucDetail extends Component {
     window.scrollTo(0, 0);
   }
 
+  saveToLocalStorage(idDetail) {
+    try {
+      const checkIdDetail = this.loadIdDetailFromLocalStorage()
+      if (checkIdDetail) {
+        window.localStorage.removeItem('idDetail');
+      }
+      const idDetailStore = JSON.stringify(idDetail);
+      window.localStorage.setItem('idDetail', idDetailStore);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  loadIdDetailFromLocalStorage() {
+    try {
+      const idDetailStore = window.localStorage.getItem('idDetail');
+      if (idDetailStore === null) return undefined;
+      return JSON.parse(idDetailStore);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }
+
   async getData() {
-    let apiRequest = [getById(this.props.match.params.id), getAll(1, 4)
-    ];
+    let id = this.props.location.state
+    if (id) this.saveToLocalStorage(id)
+    id = this.loadIdDetailFromLocalStorage()
+    let apiRequest = [getById(id), getAll(1, 4)];
+
     let apiResponse = await axios.all(apiRequest).then(
       axios.spread(function (dataDetail, dataALL) {
         return {
@@ -46,7 +73,7 @@ class TintucDetail extends Component {
       })
     );
     if (apiResponse) {
-      let tintucFilter = apiResponse.tintuc.docs?.filter(data => data._id !== this.props.match.params.id)
+      let tintucFilter = apiResponse.tintuc.docs?.filter(data => data._id !== id)
       this.setState({
         data: apiResponse.data,
         tintuc: tintucFilter,
@@ -61,6 +88,7 @@ class TintucDetail extends Component {
         <div >
           {this.state.loading ? <Loader></Loader> : ''}
         </div>
+
         {
           !this.state.loading && <div style={{ width: '100%', padding: '0px' }}> <BreadcrumbComponent /> </div>
         }
@@ -76,7 +104,7 @@ class TintucDetail extends Component {
             {this.state.tintuc.map((data, index) => {
               return (
                 <div key={index}>
-                  <Link className="hover-color" to={`/tintuc/${data._id}`}>
+                  <Link className="hover-color" to={{ pathname: `/tintuc/${data.url}`, state: `${data._id}` }}>
                     <li className="">{data.tieude}</li>
                   </Link>
                 </div>

@@ -34,17 +34,17 @@ const mainRoutes = [
 
   },
   {
-    path: '/dev/:id',
+    path: '/dev/:link',
     component: DevDetail,
     icon: 'home',
-    name: ''
+    name: '',
+
   },
   {
-    path: '/tintuc/:id',
+    path: '/tintuc/:link',
     component: TintucDetail,
     icon: 'home',
     name: '',
-    exact: true,
 
   },
   {
@@ -57,11 +57,10 @@ const mainRoutes = [
   },
 
   {
-    path: '/technology/:id',
+    path: '/technology/:link',
     component: TechnologyDetail,
     icon: 'home',
     name: '',
-    exact: true,
 
   },
 
