@@ -10,12 +10,14 @@ import { Card } from 'antd'
 import YoutubeEmbed from 'components/youtube/YoutubeEmbed';
 import 'components/youtube/styles.css'
 import axios from 'axios'
+import { saveID } from 'reduxApp'
+import { connect } from 'react-redux'
 
 class DevDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _id: this.props.match.params.id,
+      _id: '',
       data: [],
       loading: true,
       dev: []
@@ -25,8 +27,58 @@ class DevDetail extends Component {
     this.getData()
   }
 
+  saveToLocalStorage(idDetail) {
+    try {
+      const checkIdDetail = this.loadIdDetailFromLocalStorage()
+      if (checkIdDetail) {
+        window.localStorage.removeItem('idDetail');
+      }
+      const idDetailStore = JSON.stringify(idDetail);
+      window.localStorage.setItem('idDetail', idDetailStore);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  loadIdDetailFromLocalStorage() {
+    try {
+      const idDetailStore = window.localStorage.getItem('idDetail');
+      if (idDetailStore === null) return undefined;
+      return JSON.parse(idDetailStore);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }
+
+
   async getData() {
-    let apiRequest = [getById(this.props.match.params.id), getAll(1, 4)];
+    let id = this.props.location.state
+    if (id) this.saveToLocalStorage(id)
+    id = this.loadIdDetailFromLocalStorage()
+    let apiRequest = [getById(id), getAll(1, 4)];
+    let apiResponse = await axios.all(apiRequest).then(
+      axios.spread(function (dataDetail, dataALL) {
+        return {
+          data: dataDetail,
+          dev: dataALL
+        };
+      })
+    );
+    if (apiResponse) {
+      let devFilter = apiResponse.dev.docs?.filter(data => data._id !== id)
+      this.setState({
+        data: apiResponse.data,
+        dev: devFilter,
+        loading: false
+      })
+    }
+
+  }
+
+  async getDataUpdate() {
+    const idLocal = this.loadIdDetailFromLocalStorage()
+    let apiRequest = [getById(idLocal), getAll(1, 4)];
     let apiResponse = await axios.all(apiRequest).then(
       axios.spread(function (dataDetail, dataALL) {
         return {
@@ -40,16 +92,20 @@ class DevDetail extends Component {
       this.setState({
         data: apiResponse.data,
         dev: devFilter,
-        loading: false
+        loading: false,
       })
     }
   }
+
   async componentDidUpdate(prevProps, prevState) {
     const { location } = this.props;
 
     if (location !== prevProps.location) {
       this.getData()
     }
+    // if (this.state._id === '' && !this.state.data) {
+    //   this.getDataUpdate()
+    // }
     window.scrollTo(0, 0);
   }
   render() {
@@ -73,8 +129,8 @@ class DevDetail extends Component {
           !this.state.loading && this.state.dev.length > 0 && <Card title={'Bài viết khác'} style={{ width: '100%' }}>
             {this.state.dev.map((data, index) => {
               return (
-                <div key={index}>
-                  <Link className="hover-color" to={`/dev/${data._id}`}>
+                <div key={data._id}>
+                  <Link className="hover-color" to={{ pathname: `/dev/${data.url}`, state: `${data._id}` }}>
                     <li className="">{data.tieude}</li>
                   </Link>
                 </div>
@@ -89,4 +145,5 @@ class DevDetail extends Component {
 
 }
 
-export default DevDetail;
+
+export default DevDetail

@@ -56,22 +56,22 @@ class Tintuc extends Component {
           {this.state.data.length == 0 && !this.state.loading ? <NoData></NoData> : ''}
         </div>
         {
-          this.state.data?.map(tintuc => {
+          this.state.data?.map(dataTintuc => {
             return (
-              <div key={tintuc._id}>
+              <div key={dataTintuc._id}>
                 <div className="article-item wow zoomIn animated">
                   <div className="article-body" onMouseOver={this.handleMouseOver}>
-                    <Link to={`/tintuc/${tintuc._id}`}><h4>{tintuc.tieude}</h4></Link>
+                    <Link to={{ pathname: `/tintuc/${dataTintuc.url}`, state: `${dataTintuc._id}` }}><h4>{dataTintuc.tieude}</h4></Link>
                     <p>
-                      <span>Thời gian: {timeFormatter(tintuc.created_at)}</span>
+                      <span>Thời gian: {timeFormatter(dataTintuc.created_at)}</span>
                       &nbsp;&nbsp;&nbsp;
                     </p>
                     <div className="article-abstract">
-                      {tintuc.mota} ...
+                      {dataTintuc.mota} ...
                     </div>
                     <span className='article-link'>
                       <Button type="primary" shape="round" size={'middle'}>
-                        <Link style={{ color: 'white' }} to={`/tintuc/${tintuc._id}`}>Xem thêm >></Link>
+                        <Link style={{ color: 'white' }} to={{ pathname: `/tintuc/${dataTintuc.url}`, state: `${dataTintuc._id}` }}>Xem thêm >></Link>
                       </Button>
                     </span>
                   </div>

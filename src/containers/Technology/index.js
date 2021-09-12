@@ -60,22 +60,22 @@ class Technology extends Component {
           {!this.state.loading && this.state.data.length == 0 ? <NoData></NoData> : ''}
         </div>
         {
-          this.state.data?.map(dataTechnology => {
+          this.state.data?.map(dataTech => {
             return (
-              <div key={dataTechnology._id}>
+              <div key={dataTech._id}>
                 <div className="article-item wow zoomIn animated">
                   <div className="article-body" onMouseOver={this.handleMouseOver}>
-                    <Link to={`/technology/${dataTechnology._id}`}><h4>{dataTechnology.tieude}</h4></Link>
+                    <Link to={{ pathname: `/technology/${dataTech.url}`, state: `${dataTech._id}` }}><h4>{dataTech.tieude}</h4></Link>
                     <p>
-                      <span>Thời gian: {timeFormatter(dataTechnology.created_at)}</span>
+                      <span>Thời gian: {timeFormatter(dataTech.created_at)}</span>
                       &nbsp;&nbsp;&nbsp;
                     </p>
                     <div className="article-abstract">
-                      {dataTechnology.mota} ...
+                      {dataTech.mota} ...
                     </div>
                     <span className='article-link'>
                       <Button type="primary" shape="round" size={'middle'}>
-                        <Link style={{ color: 'white' }} to={`/technology/${dataTechnology._id}`}>Xem thêm >></Link>
+                        <Link style={{ color: 'white' }} to={{ pathname: `/technology/${dataTech.url}`, state: `${dataTech._id}` }}>Xem thêm >></Link>
                       </Button>
                     </span>
                   </div>

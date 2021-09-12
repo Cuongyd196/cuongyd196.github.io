@@ -8,6 +8,7 @@ import history from 'utils/history';
 import App from './App';
 import 'antd/dist/antd.css';
 import './components/common.scss';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 // define format of string
 if (!String.prototype.format) {
@@ -29,9 +30,9 @@ const MOUNT_NODE = document.getElementById('root');
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <HashRouter >
         <App />
-      </ConnectedRouter>
+      </HashRouter>
     </Provider>,
     MOUNT_NODE,
   );
