@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap5/css/bootstrap.min.css">
+    <script src="bootstrap5/js/bootstrap.min.js"></script>
+    <style>
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: red;
+          color: white;
+          text-align: center;
+          padding-top: 8px;
+        }
+        </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FICT-HDU</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-current="page">Trang chủ
+                            <span class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên kết</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Chức năng</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Action 1</a>
+                            <a class="dropdown-item" href="#">Action 2</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex my-2 my-lg-0">
+                    <input class="form-control me-sm-2" type="text" placeholder="Tìm kiếm" />
+                    <button class="btn btn-outline-success my-2 my-sm-0 text-white" type="submit">
+                        Tìm
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="row">
+
+            <div class="col-md-8 col-sm-12">
+                <h2 class="text-center">Phép tính 2 số</h2>
+                <form id="calculationForm">
+                    <div class="mb-3">
+                        <label for="number1" class="form-label">Số thứ nhất</label>
+                        <input type="number" class="form-control" id="number1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="operation" class="form-label">Phép tính</label>
+                        <select class="form-control" id="operation" required>
+                            <option value="add">Cộng</option>
+                            <option value="subtract">Trừ</option>
+                            <option value="multiply">Nhân</option>
+                            <option value="divide">Chia</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="number2" class="form-label">Số thứ hai</label>
+                        <input type="number" class="form-control" id="number2" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tính toán</button>
+                </form>
+                <div id="result" class="mt-3"></div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <h2 class="text-center">Thông tin cá nhân</h2>
+                <div class="text-center">
+                    <img src="./img/lab10_login_avatar1.png" alt="Avatar" class="rounded-circle" width="150" height="150">
+                </div>
+                <p><strong>Họ và tên:</strong> Nguyễn Văn A</p>
+                <p><strong> Mã sinh viên:</strong> 123456789 </p>
+                <p><strong>Lớp:</strong> K26-CNTT</p>
+                <p><strong>Mạng xã hội:</strong>
+                    <a href="your_facebook_link" target="_blank">Facebook</a>,
+                    <a href="your_twitter_link" target="_blank">Twitter</a>,
+                    <a href="your_instagram_link" target="_blank">Instagram</a>
+                </p>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="footer bg-primary">
+        <p class="text-center text-white">Bản quyền &copy; FICT-HDU</p>
+    </div>
+</body>
+
+</html>

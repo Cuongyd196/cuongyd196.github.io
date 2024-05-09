@@ -1,1 +1,0 @@
-export const SAVE_ID_DETAIL = 'SAVE_ID_DETAIL'
